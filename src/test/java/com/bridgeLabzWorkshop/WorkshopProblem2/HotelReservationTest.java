@@ -5,51 +5,14 @@ import org.junit.Test;
 
 public class HotelReservationTest 
 {
-	@Test
-	public void WhenInitializingLakewoodShouldReturnRatings()  
-	{
-		HotelReservationSystem obj = new HotelReservationSystem();
-		int result;
-		try
-		{
-			result = obj.initializeLakeWood();
-			Assert.assertEquals(3,result);	
-		}
-		catch(NullPointerException e)
-		{
-			System.out.println(e.getMessage());
-		}	
-	}
-	
-	@Test
-	public void WhenInitializingBridgewoodShouldReturnRatings()  
-	{
-		HotelReservationSystem obj = new HotelReservationSystem();
-		int result;
-		try
-		{
-			result = obj.initializeBridgeWood();
-			Assert.assertEquals(4,result);	
-		}
-		catch(NullPointerException e)
-		{
-			System.out.println(e.getMessage());
-		}	
-	}
-	
-	@Test
-	public void WhenInitializingRidgewoodShouldReturnRatings()  
-	{
-		HotelReservationSystem obj = new HotelReservationSystem();
-		int result;
-		try
-		{
-			result = obj.initializeRidgeWood();
-			Assert.assertEquals(5,result);	
-		}
-		catch(NullPointerException e)
-		{
-			System.out.println(e.getMessage());
-		}	
-	}
+	 @Test
+	 public void CheckIfHotelIsAdded()
+	 {
+		HotelReservationSystem hotelReservationSystem = new HotelReservationSystem();
+	    hotelReservationSystem.addHotelName("LockWood",90,80,110,80,3);
+	    hotelReservationSystem.addHotelName("BridgeWood",60,50,160,110,4);
+	    hotelReservationSystem.addHotelName("RidgeWood",150,40,220,100,5);
+	    int entry = hotelReservationSystem.countHotels();
+	    Assert.assertEquals(3,entry);
+	 }
 }

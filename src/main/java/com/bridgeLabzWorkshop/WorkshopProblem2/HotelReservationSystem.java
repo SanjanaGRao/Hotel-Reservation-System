@@ -1,69 +1,38 @@
 package com.bridgeLabzWorkshop.WorkshopProblem2;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
+/**
+ * Class for Hotel Reservation System
+ * @author Sanjana Rao
+ * @since 22-09-2021
+ */
 public class HotelReservationSystem 
-{
-	 private HashMap<String, List<Integer>> lakeWood = new HashMap<>();
-	 private HashMap<String, List<Integer>> bridgeWood = new HashMap<>();
-	 private HashMap<String, List<Integer>> ridgeWood = new HashMap<>();
-	 private static int lakeWoodRating;
-	 private static int bridgeWoodRating;
-	 private static int ridgeWoodRating;
+{	 
+	 private List<Hotels> hotelReservationSystem = new ArrayList<>();
 	 
-		 public HotelReservationSystem() 
-		 {
-		        initializeLakeWood();
-		        initializeBridgeWood();
-		        initializeRidgeWood();
-		 }
-
-	    public int initializeLakeWood() 
+	    /**
+	     * method to add hotel to the system
+	     * @param hotelName name of the hotel
+	     * @param weekdayRateRegular price on a week day for a regular customer
+	     * @param weekdayRateReward  price on a week day for a reward customer
+	     * @param weekendRateRegular  price on a weekend for a regular customer
+	     * @param weekendRateReward  price on a weekend for a reward customer
+	     * @param ratings ratings of the hotel
+	     * @return true if hotel is added
+	     */
+	    public Boolean addHotelName(String hotelNames,int weekendRatingForRegCustomer, int weekendRatingForRewCustomer, int weekdayRatingForRegCustomer, int weekdayRatingForRewCustomer, int hotelRatings)
 	    {
-	        List<Integer> lakeWoodRewards = new ArrayList<>();
-	        lakeWoodRewards.add(80); //weekday
-	        lakeWoodRewards.add(80); //wekend
-
-	        List<Integer> lakeWoodRegular = new ArrayList<>();
-	        lakeWoodRegular.add(110);
-	        lakeWoodRegular.add(90);
-
-	        lakeWood.put("Rewards", lakeWoodRewards);
-	        lakeWood.put("Regular", lakeWoodRegular);
-	        lakeWoodRating = 3;
-	        return lakeWoodRating;
+	        hotelReservationSystem.add(new Hotels(hotelNames,weekendRatingForRegCustomer,weekendRatingForRewCustomer,weekdayRatingForRegCustomer,weekdayRatingForRewCustomer,hotelRatings));
+	        return true;
 	    }
-	    public int initializeBridgeWood() 
+	    
+	    /**
+	     * to get the number of hotels in the reservation system
+	     * @return number of hotels
+	     */
+	    public int countHotels() 
 	    {
-	        List<Integer> bridgeWoodRewards = new ArrayList<>();
-	        bridgeWoodRewards.add(110);
-	        bridgeWoodRewards.add(50);
-
-	        List<Integer> bridgeWoodRegular = new ArrayList<>();
-	        bridgeWoodRegular.add(160);
-	        bridgeWoodRegular.add(60);
-
-	        bridgeWood.put("Rewards", bridgeWoodRewards);
-	        bridgeWood.put("Regular", bridgeWoodRegular);
-	        bridgeWoodRating = 4;
-	        return bridgeWoodRating;
-	    }
-
-	    public int initializeRidgeWood() 
-	    {
-	        List<Integer> ridgeWoodRewards = new ArrayList<>();
-	        ridgeWoodRewards.add(100);
-	        ridgeWoodRewards.add(40);
-
-	        List<Integer> ridgeWoodRegular = new ArrayList<>();
-	        ridgeWoodRegular.add(220);
-	        ridgeWoodRegular.add(150);
-
-	        ridgeWood.put("Rewards", ridgeWoodRewards);
-	        ridgeWood.put("Regular", ridgeWoodRegular);
-	        ridgeWoodRating = 5;
-	        return ridgeWoodRating;
+	        return hotelReservationSystem.size();
 	    }
 }
