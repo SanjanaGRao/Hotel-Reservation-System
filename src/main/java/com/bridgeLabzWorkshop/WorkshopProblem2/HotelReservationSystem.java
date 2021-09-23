@@ -38,27 +38,58 @@ public class HotelReservationSystem
 	    }
 	    
 	    /**
-	     * A method to get the hotel whose cost is cheap
-	     * @param checkIn date when you checkin the hotel
-	     * @param checkOut date when you want to checkout from hotel
+	     * The method getCost is used to calculate cost of stay for each hotel.
+	     * @param hotel is the name of the hotel for which you want to calculate
+	     * @return cost at that particular hotel
+	     */
+	    public double getCost(List<Integer> days,Hotels hotel)
+	    {
+	        double temp=0;
+	        for(int j:days)
+	        {
+	            if(j>1&&j<7)
+	            { 
+	                temp+=hotel.getWeekdayRate();
+	            }
+	            else
+	                temp+=hotel.getWeekendRate();  
+	        }
+	        return temp;
+	    }
+	    
+	    /**
+	     * The method getCheapHotel is the method to get the hotel whose cost is cheap.
+	     * @param checkIn date is the date you checkin to the hotel.
+	     * @param checkOut date date you want to checkout from the hotel.
+	     * @param cost is used to view the cost of the stay for customer.
 	     * @return hotelName
 	     */
 	    public String getCheapHotel(Date checkIn, Date checkOut)
 	    {
-	        int days = (int)( (checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
-	        if(days==0)
-	            days=1;
-	        double cost = hotelReservationSystem.get(0).getWeekdayRate() * days;
-	        String hotelName = hotelReservationSystem.get(0).getHotelName();
-	        for(int i=1;i<hotelReservationSystem.size();i++)
+	    	List<Integer> days = new ArrayList<>();
+	        Date i = checkIn;
+	        while(i.compareTo(checkOut) == -1)
 	        {
-	            if(cost>hotelReservationSystem.get(i).getWeekdayRate() * days)
-	            {
-	                cost = hotelReservationSystem.get(i).getWeekdayRate() * days;
-	                hotelName = hotelReservationSystem.get(i).getHotelName();
-	            }                    
+	            Calendar cal=Calendar.getInstance();
+	            cal.setTime(i);
+	            days.add(cal.get(Calendar.DAY_OF_WEEK));
+	            cal.add( Calendar.DATE, 1 );
+	            i = cal.getTime();
 	        }
-	        System.out.println("You can stay at hotel "+hotelName+" and the cost is Rs."+cost);
-	        return hotelName;
+	        double cost;
+	        double temp;
+	        Hotels cheapHotel=hotelReservationSystem.get(0);
+	        cost = getCost(days,cheapHotel);
+	        for(Hotels hotel:hotelReservationSystem)
+	        {
+	            temp=getCost(days,hotel);
+	            if(cost>temp)
+	            {
+	                cost = temp;
+	                cheapHotel = hotel;
+	            }
+	        } 
+	        System.out.println("The cheapest hotel available is "+cheapHotel.getHotelName()+" and the cost of your stay would be $"+cost);
+	        return cheapHotel.getHotelName();   
 	    }   
 }
