@@ -11,17 +11,17 @@ import org.junit.Test;
 
 public class HotelReservationTest 
 {
-	 @Test
+		HotelReservationSystem hotelReservationSystem=new HotelReservationSystem();
+		@Test
 	    public void CheckIfHotelIsAdded() throws ParseException
 	    {
-	        HotelReservationSystem hotelReservationSystem=new HotelReservationSystem();
-	        hotelReservationSystem.addHotel("Lakewood",110);
-	        hotelReservationSystem.addHotel("Ridgewood",220);
-	        hotelReservationSystem.addHotel("Bridgewood",160);
+	        hotelReservationSystem.addHotel("Lakewood",110,90);
+	        hotelReservationSystem.addHotel("Ridgewood",220,150);
+	        hotelReservationSystem.addHotel("Bridgewood",160,50);
 	        int entry=hotelReservationSystem.countHotels();
-	        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy", Locale.ENGLISH);
-	        String entryHotel=hotelReservationSystem.cheapHotel(formatter.parse("10Sep2020"),formatter.parse("19Sep2020"));
 	        Assert.assertEquals(3,entry);
+	        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy", Locale.ENGLISH);
+	        String entryHotel=hotelReservationSystem.getCheapHotel(formatter.parse("3Oct2020"),formatter.parse("15Oct2020"));
 	        Assert.assertEquals("Lakewood",entryHotel);
 	    }
 }

@@ -23,9 +23,9 @@ public class HotelReservationSystem
 	     * @param hotelName is the name of the hotel
 	     * @param rateForRegularCustomer is the price for a regular customer
 	     */
-	    public void addHotel(String hotelName,int rateForRegularCustomer)
+	    public void addHotel(String hotelName, double weekdayRateForRegularCustomer, double weekendRateForRegularCustomer)
 	    {
-	        hotelReservationSystem.add(new Hotels(hotelName,rateForRegularCustomer));
+	        hotelReservationSystem.add(new Hotels(hotelName, weekdayRateForRegularCustomer, weekendRateForRegularCustomer));
 	    }
 	    
 	    /**
@@ -43,18 +43,18 @@ public class HotelReservationSystem
 	     * @param checkOut date when you want to checkout from hotel
 	     * @return hotelName
 	     */
-	    public String cheapHotel(Date checkIn, Date checkOut)
+	    public String getCheapHotel(Date checkIn, Date checkOut)
 	    {
 	        int days = (int)( (checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
 	        if(days==0)
 	            days=1;
-	        double cost = hotelReservationSystem.get(0).getRateRegular()*days;
+	        double cost = hotelReservationSystem.get(0).getWeekdayRate() * days;
 	        String hotelName = hotelReservationSystem.get(0).getHotelName();
 	        for(int i=1;i<hotelReservationSystem.size();i++)
 	        {
-	            if(cost>hotelReservationSystem.get(i).getRateRegular()*days)
+	            if(cost>hotelReservationSystem.get(i).getWeekdayRate() * days)
 	            {
-	                cost = hotelReservationSystem.get(i).getRateRegular()*days;
+	                cost = hotelReservationSystem.get(i).getWeekdayRate() * days;
 	                hotelName = hotelReservationSystem.get(i).getHotelName();
 	            }                    
 	        }

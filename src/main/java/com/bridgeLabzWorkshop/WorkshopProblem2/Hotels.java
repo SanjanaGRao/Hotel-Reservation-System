@@ -10,12 +10,14 @@ package com.bridgeLabzWorkshop.WorkshopProblem2;
 public class Hotels 
 {
 	 private String hotelName;
-	 private int rateForRegularCustomer;
+	 private double weekdayRateForRegularCustomer;
+	 private double weekendRateForRegularCustomer;
 	 
-	 public Hotels(String hotelName,int rateForRegularCustomer)
+	 public Hotels(String hotelName,double weekdayRateForRegularCustomer,double weekendRateForRegularCustomer)
 	 {
 	    this.setHotelName(hotelName);
-	    this.setRateRegular(rateForRegularCustomer);
+	    this.setWeekdayRate(weekdayRateForRegularCustomer);
+	    this.setWeekendRate(weekendRateForRegularCustomer);
 	 }
 	 
 	 public String getHotelName() 
@@ -28,13 +30,28 @@ public class Hotels
 	    this.hotelName = hotelName;
 	 }
 	 
-	 public int getRateRegular()
+	 public double getWeekdayRate() 
 	 {
-		 return rateForRegularCustomer;
+	    return weekdayRateForRegularCustomer;
 	 }
 	 
-	 public void setRateRegular(int rateForRegularCustomer) 
+	 public void setWeekdayRate(double weekdayRateForRegularCustomer)
 	 {
-	    this.rateForRegularCustomer = rateForRegularCustomer;
+	    this.weekdayRateForRegularCustomer = weekdayRateForRegularCustomer;
 	 }
+	    /*
+	     * getter method to get rate of regular weekend
+	     */
+	 public double getWeekendRate()
+	 {
+	    return weekendRateForRegularCustomer;
+	 }
+	    /*
+	     * setter method to set the rate of regular weekend
+	     */
+	 public void setWeekendRate(double weekendRateForRegularCustomer)
+	 {
+	        this.weekendRateForRegularCustomer = weekendRateForRegularCustomer;
+	 }	 
+	 
 }
