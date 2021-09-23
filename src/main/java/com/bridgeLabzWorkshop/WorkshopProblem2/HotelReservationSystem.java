@@ -36,4 +36,29 @@ public class HotelReservationSystem
 	    {
 	        return hotelReservationSystem.size();
 	    }
+	    
+	    /**
+	     * A method to get the hotel whose cost is cheap
+	     * @param checkIn date when you checkin the hotel
+	     * @param checkOut date when you want to checkout from hotel
+	     * @return hotelName
+	     */
+	    public String cheapHotel(Date checkIn, Date checkOut)
+	    {
+	        int days = (int)( (checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
+	        if(days==0)
+	            days=1;
+	        double cost = hotelReservationSystem.get(0).getRateRegular()*days;
+	        String hotelName = hotelReservationSystem.get(0).getHotelName();
+	        for(int i=1;i<hotelReservationSystem.size();i++)
+	        {
+	            if(cost>hotelReservationSystem.get(i).getRateRegular()*days)
+	            {
+	                cost = hotelReservationSystem.get(i).getRateRegular()*days;
+	                hotelName = hotelReservationSystem.get(i).getHotelName();
+	            }                    
+	        }
+	        System.out.println("You can stay at hotel "+hotelName+" and the cost is Rs."+cost);
+	        return hotelName;
+	    }   
 }
