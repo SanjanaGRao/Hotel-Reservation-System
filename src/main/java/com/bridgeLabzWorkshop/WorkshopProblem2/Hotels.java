@@ -1,24 +1,40 @@
 package com.bridgeLabzWorkshop.WorkshopProblem2;
-
+/**
+ * A hotel class consisting of name of the hotel,different rates and ratings
+ * The class uses getter and setter functions to get the hotel Name and rates for a customer
+ * @param hotelName gives names of the hotel
+ * @param rateForRegularCustomer gives rates for a customer for a hotel.
+ * @author Sanjana Rao
+ * @since 22-09-2021
+ */
 public class Hotels 
 {
-	 private String hotelNames; 
-	 private int weekendRatingForRegCustomer, weekendRatingForRewCustomer;
-	 private int weekdayRatingForRegCustomer, weekdayRatingForRewCustomer;
-	 private static int hotelRatings;
+	 private String hotelName;
+	 private int rateForRegularCustomer;
 	 
-	 public Hotels()
+	 public Hotels(String hotelName,int rateForRegularCustomer)
 	 {
-		 System.out.println("Welcome to Hotel Reservation System");
+	    this.setHotelName(hotelName);
+	    this.setRateRegular(rateForRegularCustomer);
 	 }
 	 
-	 public Hotels(String hotelNames,int weekendRatingForRegCustomer, int weekendRatingForRewCustomer, int weekdayRatingForRegCustomer, int weekdayRatingForRewCustomer, int hotelRatings)
+	 public String getHotelName() 
 	 {
-		 this.hotelNames = hotelNames;
-		 this.weekendRatingForRegCustomer = weekendRatingForRegCustomer;
-		 this.weekendRatingForRewCustomer = weekendRatingForRewCustomer;
-		 this.weekdayRatingForRegCustomer = weekdayRatingForRegCustomer;
-		 this.weekdayRatingForRegCustomer = weekdayRatingForRewCustomer;
-		 this.hotelRatings = hotelRatings;
+	    return hotelName;
+	 }
+	 
+	 public void setHotelName(String hotelName)
+	 {
+	    this.hotelName = hotelName;
+	 }
+	 
+	 public int getRateRegular()
+	 {
+		 return rateForRegularCustomer;
+	 }
+	 
+	 public void setRateRegular(int rateForRegularCustomer) 
+	 {
+	    this.rateForRegularCustomer = rateForRegularCustomer;
 	 }
 }
