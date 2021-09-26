@@ -78,7 +78,7 @@ public class HotelReservationSystem
 	        }
 	        double cost;
 	        double temp;
-	        Hotels cheapHotel=hotelReservationSystem.get(0);
+	        Hotels cheapHotel = hotelReservationSystem.get(0);
 	        cost = getCost(days,cheapHotel);
 	        for(Hotels hotel:hotelReservationSystem)
 	        {
@@ -89,7 +89,39 @@ public class HotelReservationSystem
 	                cheapHotel = hotel;
 	            }
 	        } 
-	        System.out.println("The cheapest hotel available is "+cheapHotel.getHotelName()+" and the cost of your stay would be $"+cost);
+	        System.out.println("The cheapest hotel available for the given date is "+cheapHotel.getHotelName()+" and the cost of your stay would be $"+cost);
 	        return cheapHotel.getHotelName();   
 	    }   
+	    
+	    /**
+	     * The method getBestRatedHotel is the method to get best rated hotel and also its cost
+	     * @param checkIn the date when you checkin into the hotel
+	     * @param checkOut the day when you leave the hotel
+	     * @return the name of hotel
+	     */
+	    public String getBestRatedHotel(Date checkIn,Date checkOut)
+	    {
+	        List<Integer> days=new ArrayList<>();
+	        Date i=checkIn;
+	        double  ratings=0;
+	        Hotels bestHotel = null;
+	        while(i.compareTo(checkOut)<1)
+	        {
+	            Calendar cal = Calendar.getInstance();
+	            cal.setTime(i);
+	            days.add(cal.get(Calendar.DAY_OF_WEEK));
+	            cal.add( Calendar.DATE, 1 );
+	            i = cal.getTime();
+	        }
+	        for(Hotels hotel:hotelReservationSystem)
+	        { 
+	            if(ratings<hotel.getRatings())
+	            {
+	                ratings=hotel.getRatings();
+	                bestHotel=hotel;
+	            }
+	        }
+	        System.out.println("The Best Rated Hotel for the given date is "+ bestHotel.getHotelName() +" and the cost is $"+ getCost(days, bestHotel));
+	        return bestHotel.getHotelName();
+	    }
 }

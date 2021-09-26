@@ -53,16 +53,12 @@ public class Hotels
 	 {
 	    this.weekdayRateForRegularCustomer = weekdayRateForRegularCustomer;
 	 }
-	    /*
-	     * getter method to get rate of regular weekend
-	     */
+	   
 	 public double getWeekendRate()
 	 {
 	    return weekendRateForRegularCustomer;
 	 }
-	    /*
-	     * setter method to set the rate of regular weekend
-	     */
+
 	 public void setWeekendRate(double weekendRateForRegularCustomer)
 	 {
 	        this.weekendRateForRegularCustomer = weekendRateForRegularCustomer;
