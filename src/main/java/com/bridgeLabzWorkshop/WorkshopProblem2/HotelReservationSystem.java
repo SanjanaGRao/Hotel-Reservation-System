@@ -23,9 +23,9 @@ public class HotelReservationSystem
 	     * @param hotelName is the name of the hotel
 	     * @param rateForRegularCustomer is the price for a regular customer
 	     */
-	    public void addHotel(String hotelName, double weekdayRateForRegularCustomer, double weekendRateForRegularCustomer, int hotelRatings)
+	    public void addHotel(String hotelName, double weekdayRateForRegularCustomer, double weekendRateForRegularCustomer, int hotelRatings, double weekdayRateForRewardCustomer, double weekendRateForRewardCustomer)
 	    {
-	        hotelReservationSystem.add(new Hotels(hotelName, weekdayRateForRegularCustomer, weekendRateForRegularCustomer, hotelRatings));
+	        hotelReservationSystem.add(new Hotels(hotelName, weekdayRateForRegularCustomer, weekendRateForRegularCustomer, hotelRatings, weekdayRateForRewardCustomer, weekendRateForRewardCustomer));
 	    }
 	    
 	    /**
@@ -49,10 +49,10 @@ public class HotelReservationSystem
 	        {
 	            if(j>1&&j<7)
 	            { 
-	                temp+=hotel.getWeekdayRate();
+	                temp+=hotel.getWeekdayRateForRegularCustomer();
 	            }
 	            else
-	                temp+=hotel.getWeekendRate();  
+	                temp+=hotel.getWeekendRateForRegularCustomer();  
 	        }
 	        return temp;
 	    }
